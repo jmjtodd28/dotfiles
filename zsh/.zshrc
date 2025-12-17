@@ -126,13 +126,6 @@ _plz_complete_zsh() {
 
 compdef _plz_complete_zsh plz
 
-#kube config for context swithching
-export KUBECONFIG=$HOME/.kube/config
-for file in $HOME/.kube/configs/*.yaml; do
-  export KUBECONFIG=$KUBECONFIG:$file
-done
-source <(kubectl completion zsh)
-
 #Aliases
 alias vi="nvim"
 alias ls="ls --color"
