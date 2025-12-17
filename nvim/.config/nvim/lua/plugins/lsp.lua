@@ -15,8 +15,9 @@ return {
 
     config = function()
       require("mason-lspconfig").setup({
-        --ensure_installed = { "lua_ls", "gopls" },
-        ensure_installed = { "lua_ls" },
+        -- For some reason gopls doesnt work on TM machine when using mason 
+        -- need to manually download as an executable on machine for this to work
+        ensure_installed = { "lua_ls", "pyright" },
       })
     end,
   },
@@ -25,29 +26,11 @@ return {
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-      vim.lsp.config("lua_ls", {
-        -- capabilities = capabilities,
+      vim.lsp.enable("lua_ls", {
+        capabilities = capabilities,
       })
 
-      --[[
-      vim.lsp.config("gopls", {
-        capabilities = capabilities,
-				root_dir = "~/core3/src/vault",
-        analyses = {
-          unusedparams = true,
-        },
-        staticcheck = true,
-        directoryFilters = { "-plz-out" },
-        linksInHover = false,
-        usePlaceholders = false,
-        semanticTokens = true,
-        codelenses = {
-          gc_details = true,
-        },
-      })
-      --]]
       vim.lsp.enable("gopls", {
-        -- Optional: customize capabilities, settings, etc.
         capabilities = capabilities,
         root_dir = vim.fs.root(0, { "go.work", "go.mod", ".git" }),
         settings = {
@@ -61,19 +44,7 @@ return {
         },
       })
 
-      --[[
-      vim.lsp.config("gopls", {
-        capabilities = capabilities,
-        root_dir = vim.fn.expand("~/core3/src/vault"),
-        directoryFilters = { "-plz-out" },
-        --analyses = {
-        --	unusedparams = true,
-        --},
-        --staticcheck = true,
-      })
-      --]]
-
-      vim.lsp.config("pyright", {
+      vim.lsp.enable("pyright", {
         capabilities = capabilities,
         root_dir = "~/core3/src/vault",
         settings = {
@@ -97,7 +68,7 @@ return {
       vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
       vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, {})
       vim.keymap.set("n", "<leader>go", vim.lsp.buf.type_definition, {})
-      -- vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
+      vim.keymap.set("n", "<leader>gq", vim.lsp.buf.references, {})
       vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
       vim.keymap.set("n", "<leader>ge", vim.diagnostic.goto_next, {})
       vim.keymap.set("n", "<leader>gp", vim.diagnostic.goto_prev, {})
