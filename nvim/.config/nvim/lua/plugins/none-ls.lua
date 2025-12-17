@@ -1,4 +1,5 @@
 return {
+  --[[
   "nvimtools/none-ls.nvim",
   dependencies = {
     "nvimtools/none-ls-extras.nvim",
@@ -9,7 +10,7 @@ return {
     null_ls.setup({
       sources = {
         --lua
-        null_ls.builtins.formatting.stylua,
+        -- null_ls.builtins.formatting.stylua,
         --javascript
         require("none-ls.diagnostics.eslint_d"),
         null_ls.builtins.formatting.prettier,
@@ -19,6 +20,6 @@ return {
       },
     })
 
-    vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
   end,
+--]]
 }

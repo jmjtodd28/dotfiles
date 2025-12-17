@@ -15,7 +15,7 @@ return {
 
     config = function()
       require("mason-lspconfig").setup({
-        -- For some reason gopls doesnt work on TM machine when using mason 
+        -- For some reason gopls doesnt work on TM machine when using mason
         -- need to manually download as an executable on machine for this to work
         ensure_installed = { "lua_ls", "pyright" },
       })
@@ -73,6 +73,7 @@ return {
       vim.keymap.set("n", "<leader>ge", vim.diagnostic.goto_next, {})
       vim.keymap.set("n", "<leader>gp", vim.diagnostic.goto_prev, {})
       vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
+      vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
       vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
 
       -- Map find references to telescope picker
