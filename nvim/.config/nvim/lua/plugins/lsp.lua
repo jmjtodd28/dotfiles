@@ -41,6 +41,7 @@ return {
 
       vim.lsp.config.gopls = {
         capabilities = capabilities,
+        cmd = { "gopls" },
         filetypes = { "go" },
         settings = {
           gopls = {
@@ -76,6 +77,7 @@ return {
 
       vim.lsp.pyright = {
         capabilities = capabilities,
+        cmd = { "pyright" },
         settings = {
           python = {
             analysis = {
