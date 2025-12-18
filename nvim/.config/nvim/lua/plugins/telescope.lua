@@ -19,10 +19,10 @@ return {
       vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
       vim.keymap.set("n", "<leader>fo", builtin.oldfiles, {})
       vim.keymap.set("n", "<leader>fr", function()
-      builtin.find_files({
-        cwd = "~/core3/src/vault",  -- Specify the directory here
-      })
-    end, {})
+        builtin.find_files({
+          cwd = "~/core3/src/vault",
+        })
+      end, {})
 
       require("telescope").load_extension("ui-select")
     end,
